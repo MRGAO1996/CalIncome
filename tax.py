@@ -9,7 +9,7 @@ class Income:
             if y > self.xx[i] and y < self.xx[i + 1]:
                 return (y - 5000) * self.ll[i] - self.ss[i]
 
-    # jb: 基本工资 xy: 效益工资
+    # jb: 基本工资 xy: 效益工资 gjj: 公积金缴存比例 wxyj: 五险一金缴存比例 m: 年终奖月数
     def __init__(self, jb, xy, gjj, wxyj, m):
         sq = jb + xy  # + jb / 21.75 * 2
         y = sq - jb * (gjj + wxyj)
