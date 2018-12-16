@@ -1,3 +1,1 @@
 # CalIncome
-# grygry
-# gry
