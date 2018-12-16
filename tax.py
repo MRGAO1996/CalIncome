@@ -10,11 +10,20 @@ class Income:
                 return (y - 5000) * self.ll[i] - self.ss[i]
 
     # jb: 基本工资 xy: 效益工资
-    def __init__(self, jb, xy, gjj, wxyj):
+    def __init__(self, jb, xy, gjj, wxyj, m):
         sq = jb + xy  # + jb / 21.75 * 2
         y = sq - jb * (gjj + wxyj)
-        sh = y - self.tax(y)
-        self.ysh = sh
+        self.ysr = y - self.tax(y)
+        self.njj = jb / 21.75 * 2 * 12 - self.tax(jb / 21.75 * 2 * 12)
+        self.nzj = (jb + xy) * 3 - self.tax((jb + xy) * 3)
+        self.nsr = self.ysr * 12 + self.nzj + self.njj
+        self.ngjj = jb * gjj * 12 * 2
+        self.nzsr = self.nsr + self.ngjj
 
-income = Income(12000, 4000, 0.12, 0.105)
-print(income.ysh)
+income = Income(12000, 4000, 0.12, 0.105, 3)
+print("月收入: {:.0f}".format(income.ysr))
+print("年加班奖金: {:.0f}".format(income.njj))
+print("年终奖: {:.0f}".format(income.nzj))
+print("年收入: {:.0f}".format(income.nsr))
+print("年公积金: {:.0f}".format(income.ngjj))
+print("年总收入: {:.0f}".format(income.nzsr))
